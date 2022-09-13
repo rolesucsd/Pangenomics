@@ -58,10 +58,11 @@ Visualize the division through a heatmap of the matrix with the phylogroup as an
     coul <- as.data.frame(randomColor(count=length(unique(phylogroup$phylogroup))))
     coul$phylogroup <- seq(1:nrow(coul))
     coul <- left_join(phylogroup,coul)
+    colMain <- colorRampPalette(brewer.pal(8, "Greys"))(50)
     png(filename="phylogroup_mash.png", units="in", width=10, height=10, res=300)
     heatmap(as.matrix(mash), Rowv = as.dendrogram(hc1),Colv = 'Rowv', 
         ColSideColors = coul[,2], labRow = FALSE, labCol = FALSE, 
-        col = hcl.colors(50))
+        col = colMain)
     dev.off()
 
 .. image:: lineage1_mash.png
