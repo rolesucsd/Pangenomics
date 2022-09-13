@@ -28,4 +28,42 @@ After activating Mash you can run the following snakemake rule to run Mash on al
         """
 
 
-2. Import MASH into R and cluster and other stuff
+2. Create phylogroups through clustering the MASH matrix
+
+This section will be conducted in R
+
+First read the file in a dataframe in R 
+.. code-block:: R
+    mash <- read.csv("fasta.tsv", header=TRUE, row.names=1, sep="\t", check.names = FALSE)
+Next cluster the mash file and produce a dendrogram
+.. code-block:: R 
+    dist<- as.dist(1-cor(t(mash)))
+    hc1 <- hclust(dist, method = "ward.D2" )
+    summary(hc1$height)
+    plot(hc1, hang=-5, sub="", xlab="", labels=F)
+To make phylogroups, we will cut the dendrogram at time height and this will produce the phylogroups
+
+.. image:: mash_dendrogram_l1.png
+   :alt: Dendrogram of cluster of mash distances
+   :align: center
+
+Create a dataframe with sample mapped to phylogroup
+.. code-block:: R 
+    phylogroup <- as.data.frame(cutree(hc1, h=max(hc1$height*0.125)))
+    colnames(phylogroup) <- "phylogroup"
+    phylogroup$Sample <- rownames(phylogroup)
+
+Visualize the division through a heatmap of the matrix with the phylogroup as annotation
+.. code-block:: R
+    coul <- as.data.frame(randomColor(count=length(unique(phylogroup$phylogroup))))
+    coul$phylogroup <- seq(1:nrow(coul))
+    coul <- left_join(phylogroup,coul)
+    png(filename="phylogroup_mash.png", units="in", width=10, height=10, res=300)
+    heatmap(as.matrix(mash), Rowv = as.dendrogram(hc1),Colv = 'Rowv', 
+        ColSideColors = coul[,2], labRow = FALSE, labCol = FALSE, 
+        col = hcl.colors(50))
+    dev.off()
+
+.. image:: lineage1_mash.png
+   :alt: Heatmap of mash matrix
+   :align: center
