@@ -16,6 +16,6 @@ In [] tutorial I have shown how to create phylogroups and how to summarize a gen
       column = "Division", colors = c("1" = "#b79adb", "2"= "#e89e54"), alpha = 0.5))))
 
 
-.. image:: lineage1_mash.png
-   :alt: Heatmap of mash matrix
+.. image:: upset.png
+   :alt: Upset of phylogroups
    :align: center
