@@ -17,3 +17,4 @@ Contents
    self
    mash.rst
    upset.rst
+   snakemake.rst
