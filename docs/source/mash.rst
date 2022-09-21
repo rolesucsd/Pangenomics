@@ -5,6 +5,7 @@ This tutorial implements Mash pylogroup division as created in `this source <htt
 
 1. Run MASH on files 
 `Mash <https://github.com/marbl/Mash>` .. code-block:: python can be installed through anaconda
+
 .. code-block:: bash
 
    conda install -c bioconda mash
@@ -35,10 +36,12 @@ After activating Mash you can run the following snakemake rule to run Mash on al
 This section will be conducted in R
 
 First read the file in a dataframe in R 
+
 .. code-block:: R
 
     mash <- read.csv("fasta.tsv", header=TRUE, row.names=1, sep="\t", check.names = FALSE)
 Next cluster the mash file and produce a dendrogram
+
 .. code-block:: R 
 
     dist<- as.dist(1-cor(t(mash)))
@@ -53,6 +56,7 @@ To make phylogroups, we will cut the dendrogram at time height and this will pro
    :align: center
 
 Create a dataframe with sample mapped to phylogroup
+
 .. code-block:: R 
 
     phylogroup <- as.data.frame(cutree(hc1, h=max(hc1$height*0.125)))
@@ -60,6 +64,7 @@ Create a dataframe with sample mapped to phylogroup
     phylogroup$Sample <- rownames(phylogroup)
 
 Visualize the division through a heatmap of the matrix with the phylogroup as annotation
+
 .. code-block:: R
 
     coul <- as.data.frame(randomColor(count=length(unique(phylogroup$phylogroup))))
