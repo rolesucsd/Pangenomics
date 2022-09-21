@@ -135,7 +135,7 @@ After checkM, we will check to make sure the assemblies are within a reasonable 
 
 After creating a list for input into FastANI, run FastANI with the following command
 
-.. code-blcok:: python
+.. code-block:: python
 
     rule fastani:
     input:
@@ -146,4 +146,23 @@ After creating a list for input into FastANI, run FastANI with the following com
         "envs/fastani.yml"
     shell:
         "fastANI --ql {input} --rl {input} -o {output} -t 20"
+
+Convert the fastANI matrix to a edited heatmap as well as graphic output. 
+
+.. code-block:: python
+
+    rule fastani_to_graph:
+    input:
+        "../Isoqual/matrix.txt"
+    output:
+        png="../Isoqual/ani.png",
+        txt="../Isoqual/matrix_edit.txt"
+    shell:
+        """
+        python -m pip install seaborn
+        python scripts/long_to_wide.py {input} {output.txt}
+        python scripts/heatmap_ani.py {output.txt} {output.png}
+        """
+
+
 
