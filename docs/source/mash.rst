@@ -6,11 +6,13 @@ This tutorial implements Mash pylogroup division as created in `this source <htt
 1. Run MASH on files 
 `Mash <https://github.com/marbl/Mash>` .. code-block:: python can be installed through anaconda
 .. code-block:: bash
+
    conda install -c bioconda mash
 
 After activating Mash you can run the following snakemake rule to run Mash on all assembly files in a directory
 
 .. code-block:: python
+
     rule mash_fasta:
     input:
         expand("../Assembly/Shovill/{file}/{file}.fna", file=filtered)
@@ -34,9 +36,11 @@ This section will be conducted in R
 
 First read the file in a dataframe in R 
 .. code-block:: R
+
     mash <- read.csv("fasta.tsv", header=TRUE, row.names=1, sep="\t", check.names = FALSE)
 Next cluster the mash file and produce a dendrogram
 .. code-block:: R 
+
     dist<- as.dist(1-cor(t(mash)))
     hc1 <- hclust(dist, method = "ward.D2" )
     summary(hc1$height)
@@ -44,17 +48,20 @@ Next cluster the mash file and produce a dendrogram
 To make phylogroups, we will cut the dendrogram at time height and this will produce the phylogroups
 
 .. image:: mash_dendrogram_l1.png
+
    :alt: Dendrogram of cluster of mash distances
    :align: center
 
 Create a dataframe with sample mapped to phylogroup
 .. code-block:: R 
+
     phylogroup <- as.data.frame(cutree(hc1, h=max(hc1$height*0.125)))
     colnames(phylogroup) <- "phylogroup"
     phylogroup$Sample <- rownames(phylogroup)
 
 Visualize the division through a heatmap of the matrix with the phylogroup as annotation
 .. code-block:: R
+
     coul <- as.data.frame(randomColor(count=length(unique(phylogroup$phylogroup))))
     coul$phylogroup <- seq(1:nrow(coul))
     coul <- left_join(phylogroup,coul)
@@ -64,5 +71,6 @@ Visualize the division through a heatmap of the matrix with the phylogroup as an
     dev.off()
 
 .. image:: lineage1_mash.png
+    
    :alt: Heatmap of mash matrix
    :align: center
