@@ -3,4 +3,4 @@ Pangneomics tutorials
 
 Read the tutorial here:
 
-https://docs.readthedocs.io/en/stable/tutorial/
+https://pangenomics.readthedocs.io/en/latest/index.html
