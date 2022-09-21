@@ -16,6 +16,7 @@ In [] tutorial I have shown how to create phylogroups and how to summarize a gen
       keep.order = TRUE, set.metadata = list(data = metadata, plots = list(list(type = "matrix_rows", 
       column = "Division", colors = c("1" = "#b79adb", "2"= "#e89e54"), alpha = 0.5))))
 
+
 Proudcing the following image
 
 .. image:: upset.png
