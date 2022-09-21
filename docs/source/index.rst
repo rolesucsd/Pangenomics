@@ -17,4 +17,3 @@ Contents
    self
    mash.rst
    upset.rst
-   proteomics.html
