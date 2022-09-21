@@ -5,7 +5,7 @@ Upset is a method of visualizing intersections when a Venn Diagram would not be 
 In [] tutorial I have shown how to create phylogroups and how to summarize a gene presence/absence table from Roary or Panaroo. Now we can visualize the pangenome of these phylogroups using upset.
 
 
-.. code-block:: 
+.. code-block:: R
 
     library(UpSetR)
     genes_list <- genes_phylo_perc[,2:(ncol(genes_phylo_perc))]/100
