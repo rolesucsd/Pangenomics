@@ -3,7 +3,7 @@ MASH tutorial
 
 This tutorial implements Mash pylogroup division as created in `this source <https://doi.org/10.1038%2Fs42003-020-01626-5>`_.
 
-1. Run MASH on files `Mash <https://github.com/marbl/Mash>` 
+1. Run MASH on files `Mash <https://github.com/marbl/Mash>`_
 
 .. code-block:: python 
 
