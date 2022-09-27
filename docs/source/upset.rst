@@ -19,6 +19,5 @@ In [] tutorial I have shown how to create phylogroups and how to summarize a gen
 Producing the following image
 
 .. image:: upset.png
-
    :alt: Upset of phylogroups
    :align: center
