@@ -51,7 +51,6 @@ Next cluster the mash file and produce a dendrogram
 To make phylogroups, we will cut the dendrogram at time height and this will produce the phylogroups
 
 .. image:: mash_dendrogram_l1.png
-
    :alt: Dendrogram of cluster of mash distances
    :align: center
 
@@ -76,6 +75,5 @@ Visualize the division through a heatmap of the matrix with the phylogroup as an
     dev.off()
 
 .. image:: lineage1_mash.png
-    
    :alt: Heatmap of mash matrix
    :align: center
