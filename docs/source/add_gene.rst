@@ -1,3 +1,5 @@
+This tutorial will demonstrate how to take the output of roary or panaroo and summarize all the genes that match a certain annotation. The result is a dataframe that summarizes the genes accross all the samples. 
+
 .. code-block:: R 
 
 #################
@@ -8,11 +10,15 @@
 # Date- 9/23/2022
 ################
 
+Load these libraries into R 
+
 .. code-block:: R 
 
 # Libraries
 library(tidyverse)
 library(data.table)
+
+These are the files that are necessary for the function to work 
 
 .. code-block:: R 
 
@@ -21,6 +27,8 @@ library(data.table)
 groups <- read.delim("Other/metadata/group_with_phylogroup.txt",sep="\t")
 # gene presence/absence from roary output
 genes <- genes
+
+This function will take the gene_name entry and will find all the matches in the matrix and will summarize the results in the new_name column.
 
 .. code-block:: R 
 
