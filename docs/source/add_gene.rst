@@ -42,3 +42,14 @@ if(nrow(fragilysin)> 1){
 }
   return(frag_sum)
 }
+
+
+Running this command to find all the genes that contain the annotation "D-glycero-alpha-D-manno-heptose 7-phosphate kinase" and labeling the name as "Fkp" which is the name of the gene of interest gives the following dataframe: 
+
+.. image:: add_gene.png
+   :alt: Dataframe of fkp hits
+   :align: center
+
+
+
+
