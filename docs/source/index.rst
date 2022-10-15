@@ -14,4 +14,6 @@ Studying bacterial isolates through pangenomics is a powerful way to capture spe
    mash.rst
    upset.rst
    add_gene.rst
+   graph_traversal1.rst
    snakemake.rst
+
