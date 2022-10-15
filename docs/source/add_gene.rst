@@ -1,3 +1,6 @@
+Find gene of interest
+=============
+
 This tutorial will demonstrate how to take the output of roary or panaroo and summarize all the genes that match a certain annotation. The result is a dataframe that summarizes the genes accross all the samples. 
 
 .. code-block:: R 

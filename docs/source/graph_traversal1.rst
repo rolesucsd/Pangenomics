@@ -1,3 +1,6 @@
+Describe gene cluster divergence
+=============
+
 In pangenomics, one mechanism to study strain diversity is through graph traversal which allows you to find which genes are present or absent in an operon or gene cluster of interest. A graph representation of the pangenome is part of the output of the program, Panaroo. The graph represents the pangenome where each node is a gene and each edge represents the genes being adjacent on a contig in one or more of your samples. Through this output, it is possible to find every possible paths between two genes of interest within your samples.
 
 As an example, the species, Bacteroides fragilis has a collection of capsular polysaccharide biosynthesis operons. The most studied one is called PSA. PSA coats the surface of the bacteria and interacts with the surrounding enviornment including immune cells in the human gut. The amount of variation in this molecule is remarkable, and we saught to describe this variation through graph traversal.
