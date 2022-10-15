@@ -164,5 +164,30 @@ Convert the fastANI matrix to a edited heatmap as well as graphic output.
         python scripts/heatmap_ani.py {output.txt} {output.png}
         """
 
+The quality metrics can be viewed through images produced by the proceeding scripts. 
+
+.. image:: checkm_stats.png
+   :alt: Summary of checkm stats for the isolate collection
+   :align: center
 
 
+THe last snakemake block for quality control will take all the information above to create a list of all the samples that pass all the user-defined thresholds
+
+.. code-block:: python
+    rule filter_files:
+    input:
+        ani="../results/matrix_edit.txt",
+        checkm="../results/checkm_log.txt",
+        stat="../results/checkm_stats.txt"
+    params:
+        ref="9343",
+        gc=43.19,
+        genome_size=5205140
+    output:
+        "sample_list_bin.txt"
+    shell:
+        "python scripts/filter_isolates.py -o {output} -a {input.ani} -l {input.checkm} -s {input.stat} -r {params.ref} -gc {params.gc} -g {params.genome_size}"
+
+PART 3: Create Pangenome
+
+After the isolates passing the thresholds are written to a file, this file can be used to define the input for the next pipeline which is creation of the pangenome. The tool we use here is Panaroo, which is very similiar to Roary.
